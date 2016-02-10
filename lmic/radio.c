@@ -649,7 +649,7 @@ void radio_init () {
     hal_waitUntil(os_getTime()+ms2osticks(1)); // wait >100us
     hal_pin_rst(2); // configure RST pin floating!
     hal_waitUntil(os_getTime()+ms2osticks(5)); // wait 5ms
-
+    debug_str("\r\n SX1276 reset done \r\n");
     opmode(OPMODE_SLEEP);
 
     // some sanity checks, e.g., read version number
@@ -673,6 +673,8 @@ void radio_init () {
     }
     randbuf[0] = 16; // set initial index
   
+    debug_str("\r\n ...where are you going? \r\n");
+    
 #ifdef CFG_sx1276mb1_board
     // chain calibration
     writeReg(RegPaConfig, 0);

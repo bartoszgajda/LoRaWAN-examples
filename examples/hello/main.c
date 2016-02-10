@@ -46,6 +46,7 @@ int main () {
 
     debug_init();
     // initialize runtime env
+    debug_str("\r\n debug init done \r\n");
     os_init();
     // initialize debug library
     //debug_init();

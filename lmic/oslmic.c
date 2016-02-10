@@ -10,6 +10,7 @@
  *******************************************************************************/
 
 #include "lmic.h"
+#include "debug.h"
 
 // RUNTIME STATE
 static struct {
@@ -20,6 +21,7 @@ static struct {
 void os_init () {
     memset(&OS, 0x00, sizeof(OS));
     hal_init();
+    debug_str("\r\n hal init done \r\n");
     radio_init();
     LMIC_init();
 }

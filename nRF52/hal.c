@@ -12,6 +12,8 @@
 
 #include "lmic.h"
 #include "nrf.h"
+#include "debug.h"
+
 
 // -----------------------------------------------------------------------------
 // I/O & SPI
@@ -297,6 +299,7 @@ void hal_init () {
 }
 
 void hal_failed () {
+    debug_str("\r\n Failure!! \r\n");
     // HALT...
     hal_disableIRQs();
     hal_sleep();
