@@ -23,6 +23,7 @@ void os_init () {
     hal_init();
     debug_str("\r\n hal init done \r\n");
     radio_init();
+    debug_str("\r\n radio init done \r\n");
     LMIC_init();
 }
 

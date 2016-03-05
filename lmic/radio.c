@@ -304,6 +304,8 @@ static void opmodeLora() {
     u |= 0x8;   // TBD: sx1276 high freq
 #endif
     writeReg(RegOpMode, u);
+    u1_t tmp = u+0x20;
+    debug_str(&tmp);
 }
 
 static void opmodeFSK() {
@@ -531,7 +533,12 @@ static const u1_t rxlorairqmask[] = {
 static void rxlora (u1_t rxmode) {
     // select LoRa modem (from sleep mode)
     opmodeLora();
+    debug_str("\r\n send opmodelora done \r\n");
+    //u1_t tmp = readReg(RegOpMode);
+    //tmp = tmp+0x20;
+    //debug_str(&tmp);
     ASSERT((readReg(RegOpMode) & OPMODE_LORA) != 0);
+    debug_str("\r\n check done \r\n");
     // enter standby mode (warm up))
     opmode(OPMODE_STANDBY);
     // don't use MAC settings at startup
@@ -650,19 +657,30 @@ void radio_init () {
     hal_pin_rst(2); // configure RST pin floating!
     hal_waitUntil(os_getTime()+ms2osticks(5)); // wait 5ms
     debug_str("\r\n SX1276 reset done \r\n");
+    
+    u1_t aaa = readReg(RegVersion);
+    aaa = aaa+0x20;
+    debug_str(&aaa);
+    
+    //hal_failed(); //remove
+    
     opmode(OPMODE_SLEEP);
 
     // some sanity checks, e.g., read version number
     u1_t v = readReg(RegVersion);
 #ifdef CFG_sx1276_radio
+    //debug_str("\r\n ver check: \r\n");
+    u1_t bbb = readReg(RegVersion);
     ASSERT(v == 0x12 ); 
 #elif CFG_sx1272_radio
     ASSERT(v == 0x22);
 #else
 #error Missing CFG_sx1272_radio/CFG_sx1276_radio
 #endif
+        
     // seed 15-byte randomness via noise rssi
     rxlora(RXMODE_RSSI);
+    
     while( (readReg(RegOpMode) & OPMODE_MASK) != OPMODE_RX ); // continuous rx
     for(int i=1; i<16; i++) {
         for(int j=0; j<8; j++) {
@@ -673,8 +691,6 @@ void radio_init () {
     }
     randbuf[0] = 16; // set initial index
   
-    debug_str("\r\n ...where are you going? \r\n");
-    
 #ifdef CFG_sx1276mb1_board
     // chain calibration
     writeReg(RegPaConfig, 0);

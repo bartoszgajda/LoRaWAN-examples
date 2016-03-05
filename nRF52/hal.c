@@ -122,54 +122,98 @@ void GPIOTE_IRQHandler () {
 // -----------------------------------------------------------------------------
 // SPI
 
+//static void hal_spi_init () { //SPI pins config
+//    
+//    //gpio cfg: SCK
+//    NRF_GPIO->PIN_CNF[SCK_PIN] = (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos);
+//    NRF_GPIO->DIRSET = (1UL << SCK_PIN); 
+//    NRF_GPIO->OUTCLR = (1UL << SCK_PIN);
+//    NRF_SPIM0->PSEL.SCK = (SCK_PIN << SPIM_PSEL_SCK_PIN_Pos) | 
+//                          (SPIM_PSEL_SCK_CONNECT_Connected << SPIM_PSEL_SCK_CONNECT_Pos); 
+//    
+//    //gpio cfg: MOSI
+//    NRF_GPIO->DIRSET = (1UL << MOSI_PIN);
+//    NRF_GPIO->OUTSET = (1UL << MOSI_PIN);
+//    NRF_SPIM0->PSEL.MOSI = (MOSI_PIN << SPIM_PSEL_MOSI_PIN_Pos) | 
+//                           (SPIM_PSEL_MOSI_CONNECT_Connected << SPIM_PSEL_MOSI_CONNECT_Pos); 
+//    
+//    //gpio cfg: MISO
+//    NRF_GPIO->DIRCLR = (1UL << MISO_PIN);
+//    NRF_GPIO->PIN_CNF[MISO_PIN] = (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos);
+//    NRF_SPIM0->PSEL.MISO = (MISO_PIN << SPIM_PSEL_MISO_PIN_Pos) | 
+//                           (SPIM_PSEL_MISO_CONNECT_Connected << SPIM_PSEL_MISO_CONNECT_Pos); 
+//    
+//    NRF_SPIM0->CONFIG = (SPIM_CONFIG_CPHA_Leading << SPIM_CONFIG_CPHA_Pos) | (SPIM_CONFIG_CPOL_ActiveHigh << SPIM_CONFIG_CPOL_Pos); 
+//    NRF_SPIM0->FREQUENCY = (SPIM_FREQUENCY_FREQUENCY_K125 << SPIM_FREQUENCY_FREQUENCY_Pos);
+//    NRF_SPIM0->ENABLE = SPIM_ENABLE_ENABLE_Enabled << SPIM_ENABLE_ENABLE_Pos; 
+//    
+//}
+
 static void hal_spi_init () { //SPI pins config
     
     //gpio cfg: SCK
+    NRF_GPIO->PIN_CNF[SCK_PIN] = (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos);
     NRF_GPIO->DIRSET = (1UL << SCK_PIN); 
     NRF_GPIO->OUTCLR = (1UL << SCK_PIN);
-    NRF_GPIO->PIN_CNF[SCK_PIN] = (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos);
-    NRF_SPIM0->PSEL.SCK = (SCK_PIN << SPIM_PSEL_SCK_PIN_Pos) | 
-                          (SPIM_PSEL_SCK_CONNECT_Connected << SPIM_PSEL_SCK_CONNECT_Pos); 
+    NRF_SPI0->PSEL.SCK = SCK_PIN; 
     
     //gpio cfg: MOSI
     NRF_GPIO->DIRSET = (1UL << MOSI_PIN);
-    NRF_GPIO->OUTSET = (1UL << MOSI_PIN);
-    NRF_SPIM0->PSEL.MOSI = (MOSI_PIN << SPIM_PSEL_MOSI_PIN_Pos) | 
-                           (SPIM_PSEL_MOSI_CONNECT_Connected << SPIM_PSEL_MOSI_CONNECT_Pos); 
+    NRF_GPIO->OUTCLR = (1UL << MOSI_PIN);
+    NRF_SPI0->PSEL.MOSI = MOSI_PIN;  
     
     //gpio cfg: MISO
     NRF_GPIO->DIRCLR = (1UL << MISO_PIN);
     NRF_GPIO->PIN_CNF[MISO_PIN] = (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos);
-    NRF_SPIM0->PSEL.MISO = (MISO_PIN << SPIM_PSEL_MISO_PIN_Pos) | 
-                           (SPIM_PSEL_MISO_CONNECT_Connected << SPIM_PSEL_MISO_CONNECT_Pos); 
+    NRF_SPI0->PSEL.MISO = MISO_PIN; 
+    
+    //NRF_SPI0->CONFIG = (SPI_CONFIG_CPHA_Leading << SPI_CONFIG_CPHA_Pos) | (SPI_CONFIG_CPOL_ActiveHigh << SPI_CONFIG_CPOL_Pos); 
+    //NRF_SPI0->FREQUENCY = (SPI_FREQUENCY_FREQUENCY_K125 << SPI_FREQUENCY_FREQUENCY_Pos);
+    NRF_SPI0->ENABLE = SPI_ENABLE_ENABLE_Enabled << SPI_ENABLE_ENABLE_Pos; 
     
 }
 
 // perform SPI transaction with radio
+//u1_t hal_spi (u1_t out) {
+//    uint32_t spi_in; 
+//    uint32_t *spi_in_ptr;
+//    spi_in_ptr = &spi_in;
+//    
+//    u1_t *spi_out_ptr;
+//    spi_out_ptr = &out;
+//    
+//    NRF_SPIM0->TXD.PTR = (uint32_t)spi_out_ptr;
+//    NRF_SPIM0->TXD.MAXCNT = 1 << SPIM_TXD_MAXCNT_MAXCNT_Pos;
+//    NRF_SPIM0->RXD.PTR = (uint32_t)spi_in_ptr;
+//    NRF_SPIM0->RXD.MAXCNT = 1 << SPIM_RXD_MAXCNT_MAXCNT_Pos;    
+//    
+//    NRF_SPIM0->TASKS_START = 1;
+//    
+//    while(NRF_SPIM0->EVENTS_ENDRX == 0); //SPI transaction
+//    NRF_SPIM0->EVENTS_ENDRX = 0;
+//    
+//    //NRF_SPIM0->TASKS_STOP = 1;
+//    
+//    //while(NRF_SPIM0->EVENTS_STOPPED == 0); //SPI stopping
+//    //NRF_SPIM0->EVENTS_STOPPED = 0;
+//    
+//    //NRF_SPIM0->ENABLE = SPIM_ENABLE_ENABLE_Disabled << SPIM_ENABLE_ENABLE_Pos;
+//    
+//    return *((u1_t *)spi_in_ptr); // return received byte
+//}
+
 u1_t hal_spi (u1_t out) {
-    uint32_t spi_in; 
-    uint32_t *spi_in_ptr;
-    spi_in_ptr = &spi_in;
+        
+    u1_t spi_in;
     
-    u1_t *spi_out_ptr;
-    spi_out_ptr = &out;
+    NRF_SPI0->TXD = out;
+          
+    while(NRF_SPI0->EVENTS_READY == 0); //SPI transaction
+    NRF_SPI0->EVENTS_READY = 0;
     
-    NRF_SPIM0->TXD.PTR = (uint32_t)spi_out_ptr;
-    NRF_SPIM0->TXD.MAXCNT = 1 << SPIM_TXD_MAXCNT_MAXCNT_Pos;
-    NRF_SPIM0->RXD.PTR = (uint32_t)spi_in_ptr;
-    NRF_SPIM0->RXD.MAXCNT = 1 << SPIM_RXD_MAXCNT_MAXCNT_Pos;    
+    spi_in = NRF_SPI0->RXD; 
     
-    NRF_SPIM0->ENABLE = SPIM_ENABLE_ENABLE_Enabled << SPIM_ENABLE_ENABLE_Pos;
-    
-    NRF_SPIM0->TASKS_START = 1;
-    
-    while(NRF_SPIM0->EVENTS_END == 0); //SPI transaction
-    
-    NRF_SPIM0->TASKS_STOP = 1;
-    NRF_SPIM0->EVENTS_END = 0;
-    NRF_SPIM0->ENABLE = SPIM_ENABLE_ENABLE_Disabled << SPIM_ENABLE_ENABLE_Pos;
-    
-    return * ((u1_t*)spi_in_ptr); // return received byte
+    return spi_in; // return received byte
 }
 
 
