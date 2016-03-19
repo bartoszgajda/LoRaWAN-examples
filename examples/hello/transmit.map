@@ -122,21 +122,21 @@ Image Symbol Table
     RESET                                    0x00000000   Section     1024  arm_startup_nrf52.o(RESET)
     ../clib/microlib/division.c              0x00000000   Number         0  ldiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
     ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
@@ -247,61 +247,60 @@ Image Symbol Table
     rxlora                                   0x000034f3   Thumb Code   186  radio.o(.text)
     rxfsk                                    0x000035ad   Thumb Code   260  radio.o(.text)
     startrx                                  0x000036b1   Thumb Code    46  radio.o(.text)
-    .text                                    0x000039f8   Section        0  debug.o(.text)
-    .text                                    0x00003ba0   Section        0  hal.o(.text)
-    hal_io_init                              0x00003ba1   Thumb Code    44  hal.o(.text)
-    hal_spi_init                             0x00003ca7   Thumb Code    84  hal.o(.text)
-    hal_time_init                            0x00003d1d   Thumb Code    54  hal.o(.text)
-    deltaticks                               0x00003d97   Thumb Code    34  hal.o(.text)
-    NVIC_EnableIRQ                           0x00003e5d   Thumb Code    22  hal.o(.text)
-    NVIC_DisableIRQ                          0x00003e73   Thumb Code    18  hal.o(.text)
-    .text                                    0x00003edc   Section       36  arm_startup_nrf52.o(.text)
-    $v0                                      0x00003edc   Number         0  arm_startup_nrf52.o(.text)
-    .text                                    0x00003f00   Section        0  system_nrf52.o(.text)
-    errata_66                                0x00003f09   Thumb Code    54  system_nrf52.o(.text)
-    errata_37                                0x00003f3f   Thumb Code    54  system_nrf52.o(.text)
-    errata_36                                0x00003f75   Thumb Code   114  system_nrf52.o(.text)
-    errata_32                                0x00003fe7   Thumb Code    54  system_nrf52.o(.text)
-    errata_31                                0x0000401d   Thumb Code   114  system_nrf52.o(.text)
-    .text                                    0x00004294   Section        0  uldiv.o(.text)
-    .text                                    0x000042f6   Section        0  ldiv.o(.text)
-    .text                                    0x00004358   Section        0  memcpya.o(.text)
-    .text                                    0x0000437c   Section        0  memseta.o(.text)
-    .text                                    0x000043a0   Section        0  llshl.o(.text)
-    .text                                    0x000043be   Section        0  llushr.o(.text)
-    .text                                    0x000043e0   Section       36  init.o(.text)
-    i.__scatterload_copy                     0x00004404   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x00004412   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00004414   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.decDR                                  0x00004424   Section        0  lmic.o(i.decDR)
-    i.dndr2rps                               0x0000443c   Section        0  lmic.o(i.dndr2rps)
-    i.getBw                                  0x00004450   Section        0  lmic.o(i.getBw)
-    i.getCr                                  0x00004458   Section        0  lmic.o(i.getCr)
-    i.getNocrc                               0x00004460   Section        0  lmic.o(i.getNocrc)
-    i.getSf                                  0x00004468   Section        0  lmic.o(i.getSf)
-    i.lowerDR                                0x00004470   Section        0  lmic.o(i.lowerDR)
-    i.setCr                                  0x0000448e   Section        0  lmic.o(i.setCr)
-    i.setIh                                  0x0000449a   Section        0  lmic.o(i.setIh)
-    i.setNocrc                               0x000044a6   Section        0  lmic.o(i.setNocrc)
-    i.updr2rps                               0x000044b4   Section        0  lmic.o(i.updr2rps)
-    i.validDR                                0x000044c4   Section        0  lmic.o(i.validDR)
-    .constdata                               0x000044dc   Section     4392  aes.o(.constdata)
-    AES_RCON                                 0x000044dc   Data          40  aes.o(.constdata)
-    AES_S                                    0x00004504   Data         256  aes.o(.constdata)
-    AES_E1                                   0x00004604   Data        1024  aes.o(.constdata)
-    AES_E2                                   0x00004a04   Data        1024  aes.o(.constdata)
-    AES_E3                                   0x00004e04   Data        1024  aes.o(.constdata)
-    AES_E4                                   0x00005204   Data        1024  aes.o(.constdata)
-    .constdata                               0x00005604   Section      144  lmic.o(.constdata)
-    TXPOWLEVELS                              0x00005612   Data          16  lmic.o(.constdata)
-    SENSITIVITY                              0x00005622   Data          21  lmic.o(.constdata)
-    DRADJUST                                 0x00005637   Data          10  lmic.o(.constdata)
-    DR2HSYM_osticks                          0x00005644   Data          32  lmic.o(.constdata)
-    iniChannelFreq                           0x00005664   Data          48  lmic.o(.constdata)
-    .constdata                               0x00005694   Section       18  radio.o(.constdata)
-    rxlorairqmask                            0x00005694   Data           3  radio.o(.constdata)
-    LORA_RXDONE_FIXUP                        0x00005698   Data          14  radio.o(.constdata)
-    .conststring                             0x000056a8   Section      181  debug.o(.conststring)
+    .text                                    0x0000399c   Section        0  debug.o(.text)
+    .text                                    0x00003b44   Section        0  hal.o(.text)
+    hal_io_init                              0x00003b45   Thumb Code    52  hal.o(.text)
+    hal_spi_init                             0x00003c47   Thumb Code    84  hal.o(.text)
+    hal_time_init                            0x00003cbd   Thumb Code    58  hal.o(.text)
+    deltaticks                               0x00003d2f   Thumb Code    34  hal.o(.text)
+    NVIC_EnableIRQ                           0x00003e05   Thumb Code    22  hal.o(.text)
+    .text                                    0x00003e88   Section       36  arm_startup_nrf52.o(.text)
+    $v0                                      0x00003e88   Number         0  arm_startup_nrf52.o(.text)
+    .text                                    0x00003eac   Section        0  system_nrf52.o(.text)
+    errata_66                                0x00003eb5   Thumb Code    54  system_nrf52.o(.text)
+    errata_37                                0x00003eeb   Thumb Code    54  system_nrf52.o(.text)
+    errata_36                                0x00003f21   Thumb Code   114  system_nrf52.o(.text)
+    errata_32                                0x00003f93   Thumb Code    54  system_nrf52.o(.text)
+    errata_31                                0x00003fc9   Thumb Code   114  system_nrf52.o(.text)
+    .text                                    0x00004240   Section        0  uldiv.o(.text)
+    .text                                    0x000042a2   Section        0  ldiv.o(.text)
+    .text                                    0x00004304   Section        0  memcpya.o(.text)
+    .text                                    0x00004328   Section        0  memseta.o(.text)
+    .text                                    0x0000434c   Section        0  llshl.o(.text)
+    .text                                    0x0000436a   Section        0  llushr.o(.text)
+    .text                                    0x0000438c   Section       36  init.o(.text)
+    i.__scatterload_copy                     0x000043b0   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x000043be   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x000043c0   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.decDR                                  0x000043d0   Section        0  lmic.o(i.decDR)
+    i.dndr2rps                               0x000043e8   Section        0  lmic.o(i.dndr2rps)
+    i.getBw                                  0x000043fc   Section        0  lmic.o(i.getBw)
+    i.getCr                                  0x00004404   Section        0  lmic.o(i.getCr)
+    i.getNocrc                               0x0000440c   Section        0  lmic.o(i.getNocrc)
+    i.getSf                                  0x00004414   Section        0  lmic.o(i.getSf)
+    i.lowerDR                                0x0000441c   Section        0  lmic.o(i.lowerDR)
+    i.setCr                                  0x0000443a   Section        0  lmic.o(i.setCr)
+    i.setIh                                  0x00004446   Section        0  lmic.o(i.setIh)
+    i.setNocrc                               0x00004452   Section        0  lmic.o(i.setNocrc)
+    i.updr2rps                               0x00004460   Section        0  lmic.o(i.updr2rps)
+    i.validDR                                0x00004470   Section        0  lmic.o(i.validDR)
+    .constdata                               0x00004488   Section     4392  aes.o(.constdata)
+    AES_RCON                                 0x00004488   Data          40  aes.o(.constdata)
+    AES_S                                    0x000044b0   Data         256  aes.o(.constdata)
+    AES_E1                                   0x000045b0   Data        1024  aes.o(.constdata)
+    AES_E2                                   0x000049b0   Data        1024  aes.o(.constdata)
+    AES_E3                                   0x00004db0   Data        1024  aes.o(.constdata)
+    AES_E4                                   0x000051b0   Data        1024  aes.o(.constdata)
+    .constdata                               0x000055b0   Section      144  lmic.o(.constdata)
+    TXPOWLEVELS                              0x000055be   Data          16  lmic.o(.constdata)
+    SENSITIVITY                              0x000055ce   Data          21  lmic.o(.constdata)
+    DRADJUST                                 0x000055e3   Data          10  lmic.o(.constdata)
+    DR2HSYM_osticks                          0x000055f0   Data          32  lmic.o(.constdata)
+    iniChannelFreq                           0x00005610   Data          48  lmic.o(.constdata)
+    .constdata                               0x00005640   Section       18  radio.o(.constdata)
+    rxlorairqmask                            0x00005640   Data           3  radio.o(.constdata)
+    LORA_RXDONE_FIXUP                        0x00005644   Data          14  radio.o(.constdata)
+    .conststring                             0x00005654   Section      181  debug.o(.conststring)
     .data                                    0x20000000   Section        4  main.o(.data)
     cnt                                      0x20000000   Data           4  main.o(.data)
     .data                                    0x20000004   Section        8  oslmic.o(.data)
@@ -383,116 +382,116 @@ Image Symbol Table
     os_setCallback                           0x00003021   Thumb Code    44  oslmic.o(.text)
     os_setTimedCallback                      0x0000304d   Thumb Code    68  oslmic.o(.text)
     os_runloop                               0x00003091   Thumb Code    76  oslmic.o(.text)
-    radio_init                               0x000036df   Thumb Code   226  radio.o(.text)
-    radio_rand1                              0x000037c1   Thumb Code    46  radio.o(.text)
-    radio_rssi                               0x000037ef   Thumb Code    22  radio.o(.text)
-    radio_irq_handler                        0x00003805   Thumb Code   328  radio.o(.text)
-    os_radio                                 0x0000394d   Thumb Code    62  radio.o(.text)
-    debug_char                               0x000039f9   Thumb Code    56  debug.o(.text)
-    debug_str                                0x00003a31   Thumb Code    22  debug.o(.text)
-    debug_led                                0x00003a47   Thumb Code    24  debug.o(.text)
-    debug_init                               0x00003a5f   Thumb Code    68  debug.o(.text)
-    debug_hex                                0x00003aa3   Thumb Code    30  debug.o(.text)
-    debug_buf                                0x00003ac1   Thumb Code    46  debug.o(.text)
-    debug_uint                               0x00003aef   Thumb Code    30  debug.o(.text)
-    debug_val                                0x00003b0d   Thumb Code    32  debug.o(.text)
-    debug_event                              0x00003b2d   Thumb Code    28  debug.o(.text)
-    hal_sleep                                0x00003bcd   Thumb Code     4  hal.o(.text)
-    hal_disableIRQs                          0x00003bd1   Thumb Code    26  hal.o(.text)
-    hal_failed                               0x00003beb   Thumb Code    18  hal.o(.text)
-    hal_pin_rxtx                             0x00003bfd   Thumb Code    36  hal.o(.text)
-    hal_pin_nss                              0x00003c21   Thumb Code    26  hal.o(.text)
-    hal_pin_rst                              0x00003c3b   Thumb Code    44  hal.o(.text)
-    GPIOTE_IRQHandler                        0x00003c67   Thumb Code    64  hal.o(.text)
-    hal_spi                                  0x00003cfb   Thumb Code    34  hal.o(.text)
-    hal_enableIRQs                           0x00003d53   Thumb Code    28  hal.o(.text)
-    hal_ticks                                0x00003d6f   Thumb Code    40  hal.o(.text)
-    hal_waitUntil                            0x00003db9   Thumb Code    18  hal.o(.text)
-    hal_checkTimer                           0x00003dcb   Thumb Code    64  hal.o(.text)
-    RTC0_IRQHandler                          0x00003e0b   Thumb Code    50  hal.o(.text)
-    hal_init                                 0x00003e3d   Thumb Code    32  hal.o(.text)
-    Reset_Handler                            0x00003edd   Thumb Code     8  arm_startup_nrf52.o(.text)
-    NMI_Handler                              0x00003ee5   Thumb Code     2  arm_startup_nrf52.o(.text)
-    HardFault_Handler                        0x00003ee7   Thumb Code     2  arm_startup_nrf52.o(.text)
-    MemoryManagement_Handler                 0x00003ee9   Thumb Code     2  arm_startup_nrf52.o(.text)
-    BusFault_Handler                         0x00003eeb   Thumb Code     2  arm_startup_nrf52.o(.text)
-    UsageFault_Handler                       0x00003eed   Thumb Code     2  arm_startup_nrf52.o(.text)
-    SVC_Handler                              0x00003eef   Thumb Code     2  arm_startup_nrf52.o(.text)
-    PendSV_Handler                           0x00003ef1   Thumb Code     2  arm_startup_nrf52.o(.text)
-    SysTick_Handler                          0x00003ef3   Thumb Code     2  arm_startup_nrf52.o(.text)
-    CCM_AAR_IRQHandler                       0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    COMP_LPCOMP_IRQHandler                   0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    ECB_IRQHandler                           0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    I2S_IRQHandler                           0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    MWU_IRQHandler                           0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    NFCT_IRQHandler                          0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    PDM_IRQHandler                           0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    POWER_CLOCK_IRQHandler                   0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    PWM0_IRQHandler                          0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    PWM1_IRQHandler                          0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    PWM2_IRQHandler                          0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    QDEC_IRQHandler                          0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    RADIO_IRQHandler                         0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    RNG_IRQHandler                           0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    RTC1_IRQHandler                          0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    RTC2_IRQHandler                          0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SAADC_IRQHandler                         0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler 0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1_IRQHandler 0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SPIM2_SPIS2_SPI2_IRQHandler              0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SWI0_EGU0_IRQHandler                     0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SWI1_EGU1_IRQHandler                     0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SWI2_EGU2_IRQHandler                     0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SWI3_EGU3_IRQHandler                     0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SWI4_EGU4_IRQHandler                     0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SWI5_EGU5_IRQHandler                     0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    TEMP_IRQHandler                          0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    TIMER0_IRQHandler                        0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    TIMER1_IRQHandler                        0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    TIMER2_IRQHandler                        0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    TIMER3_IRQHandler                        0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    TIMER4_IRQHandler                        0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    UARTE0_UART0_IRQHandler                  0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    WDT_IRQHandler                           0x00003ef5   Thumb Code     0  arm_startup_nrf52.o(.text)
-    SystemCoreClockUpdate                    0x00003f01   Thumb Code     8  system_nrf52.o(.text)
-    SystemInit                               0x0000408f   Thumb Code   464  system_nrf52.o(.text)
-    __aeabi_uldivmod                         0x00004295   Thumb Code    98  uldiv.o(.text)
-    __aeabi_ldivmod                          0x000042f7   Thumb Code    98  ldiv.o(.text)
-    __aeabi_memcpy                           0x00004359   Thumb Code    36  memcpya.o(.text)
-    __aeabi_memcpy4                          0x00004359   Thumb Code     0  memcpya.o(.text)
-    __aeabi_memcpy8                          0x00004359   Thumb Code     0  memcpya.o(.text)
-    __aeabi_memset                           0x0000437d   Thumb Code    14  memseta.o(.text)
-    __aeabi_memset4                          0x0000437d   Thumb Code     0  memseta.o(.text)
-    __aeabi_memset8                          0x0000437d   Thumb Code     0  memseta.o(.text)
-    __aeabi_memclr                           0x0000438b   Thumb Code     4  memseta.o(.text)
-    __aeabi_memclr4                          0x0000438b   Thumb Code     0  memseta.o(.text)
-    __aeabi_memclr8                          0x0000438b   Thumb Code     0  memseta.o(.text)
-    _memset$wrapper                          0x0000438f   Thumb Code    18  memseta.o(.text)
-    __aeabi_llsl                             0x000043a1   Thumb Code    30  llshl.o(.text)
-    _ll_shift_l                              0x000043a1   Thumb Code     0  llshl.o(.text)
-    __aeabi_llsr                             0x000043bf   Thumb Code    32  llushr.o(.text)
-    _ll_ushift_r                             0x000043bf   Thumb Code     0  llushr.o(.text)
-    __scatterload                            0x000043e1   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x000043e1   Thumb Code     0  init.o(.text)
-    __scatterload_copy                       0x00004405   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x00004413   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00004415   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    decDR                                    0x00004425   Thumb Code    20  lmic.o(i.decDR)
-    dndr2rps                                 0x0000443d   Thumb Code    20  lmic.o(i.dndr2rps)
-    getBw                                    0x00004451   Thumb Code     8  lmic.o(i.getBw)
-    getCr                                    0x00004459   Thumb Code     8  lmic.o(i.getCr)
-    getNocrc                                 0x00004461   Thumb Code     8  lmic.o(i.getNocrc)
-    getSf                                    0x00004469   Thumb Code     8  lmic.o(i.getSf)
-    lowerDR                                  0x00004471   Thumb Code    30  lmic.o(i.lowerDR)
-    setCr                                    0x0000448f   Thumb Code    12  lmic.o(i.setCr)
-    setIh                                    0x0000449b   Thumb Code    12  lmic.o(i.setIh)
-    setNocrc                                 0x000044a7   Thumb Code    14  lmic.o(i.setNocrc)
-    updr2rps                                 0x000044b5   Thumb Code    10  lmic.o(i.updr2rps)
-    validDR                                  0x000044c5   Thumb Code    20  lmic.o(i.validDR)
-    maxFrameLens                             0x00005604   Data           4  lmic.o(.constdata)
-    _DR2RPS_CRC                              0x00005608   Data          10  lmic.o(.constdata)
-    Region$$Table$$Base                      0x00005760   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00005780   Number         0  anon$$obj.o(Region$$Table)
+    radio_init                               0x000036df   Thumb Code   208  radio.o(.text)
+    radio_rand1                              0x000037af   Thumb Code    46  radio.o(.text)
+    radio_rssi                               0x000037dd   Thumb Code    22  radio.o(.text)
+    radio_irq_handler                        0x000037f3   Thumb Code   328  radio.o(.text)
+    os_radio                                 0x0000393b   Thumb Code    62  radio.o(.text)
+    debug_char                               0x0000399d   Thumb Code    56  debug.o(.text)
+    debug_str                                0x000039d5   Thumb Code    22  debug.o(.text)
+    debug_led                                0x000039eb   Thumb Code    24  debug.o(.text)
+    debug_init                               0x00003a03   Thumb Code    68  debug.o(.text)
+    debug_hex                                0x00003a47   Thumb Code    30  debug.o(.text)
+    debug_buf                                0x00003a65   Thumb Code    46  debug.o(.text)
+    debug_uint                               0x00003a93   Thumb Code    30  debug.o(.text)
+    debug_val                                0x00003ab1   Thumb Code    32  debug.o(.text)
+    debug_event                              0x00003ad1   Thumb Code    28  debug.o(.text)
+    hal_sleep                                0x00003b79   Thumb Code     4  hal.o(.text)
+    hal_disableIRQs                          0x00003b7d   Thumb Code    14  hal.o(.text)
+    hal_failed                               0x00003b8b   Thumb Code    18  hal.o(.text)
+    hal_pin_rxtx                             0x00003b9d   Thumb Code    36  hal.o(.text)
+    hal_pin_nss                              0x00003bc1   Thumb Code    26  hal.o(.text)
+    hal_pin_rst                              0x00003bdb   Thumb Code    44  hal.o(.text)
+    GPIOTE_IRQHandler                        0x00003c07   Thumb Code    64  hal.o(.text)
+    hal_spi                                  0x00003c9b   Thumb Code    34  hal.o(.text)
+    hal_enableIRQs                           0x00003cf7   Thumb Code    16  hal.o(.text)
+    hal_ticks                                0x00003d07   Thumb Code    40  hal.o(.text)
+    hal_waitUntil                            0x00003d51   Thumb Code    18  hal.o(.text)
+    hal_checkTimer                           0x00003d63   Thumb Code    64  hal.o(.text)
+    RTC0_IRQHandler                          0x00003da3   Thumb Code    66  hal.o(.text)
+    hal_init                                 0x00003de5   Thumb Code    32  hal.o(.text)
+    Reset_Handler                            0x00003e89   Thumb Code     8  arm_startup_nrf52.o(.text)
+    NMI_Handler                              0x00003e91   Thumb Code     2  arm_startup_nrf52.o(.text)
+    HardFault_Handler                        0x00003e93   Thumb Code     2  arm_startup_nrf52.o(.text)
+    MemoryManagement_Handler                 0x00003e95   Thumb Code     2  arm_startup_nrf52.o(.text)
+    BusFault_Handler                         0x00003e97   Thumb Code     2  arm_startup_nrf52.o(.text)
+    UsageFault_Handler                       0x00003e99   Thumb Code     2  arm_startup_nrf52.o(.text)
+    SVC_Handler                              0x00003e9b   Thumb Code     2  arm_startup_nrf52.o(.text)
+    PendSV_Handler                           0x00003e9d   Thumb Code     2  arm_startup_nrf52.o(.text)
+    SysTick_Handler                          0x00003e9f   Thumb Code     2  arm_startup_nrf52.o(.text)
+    CCM_AAR_IRQHandler                       0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    COMP_LPCOMP_IRQHandler                   0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    ECB_IRQHandler                           0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    I2S_IRQHandler                           0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    MWU_IRQHandler                           0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    NFCT_IRQHandler                          0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    PDM_IRQHandler                           0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    POWER_CLOCK_IRQHandler                   0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    PWM0_IRQHandler                          0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    PWM1_IRQHandler                          0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    PWM2_IRQHandler                          0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    QDEC_IRQHandler                          0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    RADIO_IRQHandler                         0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    RNG_IRQHandler                           0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    RTC1_IRQHandler                          0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    RTC2_IRQHandler                          0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SAADC_IRQHandler                         0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler 0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1_IRQHandler 0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SPIM2_SPIS2_SPI2_IRQHandler              0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SWI0_EGU0_IRQHandler                     0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SWI1_EGU1_IRQHandler                     0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SWI2_EGU2_IRQHandler                     0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SWI3_EGU3_IRQHandler                     0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SWI4_EGU4_IRQHandler                     0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SWI5_EGU5_IRQHandler                     0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    TEMP_IRQHandler                          0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    TIMER0_IRQHandler                        0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    TIMER1_IRQHandler                        0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    TIMER2_IRQHandler                        0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    TIMER3_IRQHandler                        0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    TIMER4_IRQHandler                        0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    UARTE0_UART0_IRQHandler                  0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    WDT_IRQHandler                           0x00003ea1   Thumb Code     0  arm_startup_nrf52.o(.text)
+    SystemCoreClockUpdate                    0x00003ead   Thumb Code     8  system_nrf52.o(.text)
+    SystemInit                               0x0000403b   Thumb Code   464  system_nrf52.o(.text)
+    __aeabi_uldivmod                         0x00004241   Thumb Code    98  uldiv.o(.text)
+    __aeabi_ldivmod                          0x000042a3   Thumb Code    98  ldiv.o(.text)
+    __aeabi_memcpy                           0x00004305   Thumb Code    36  memcpya.o(.text)
+    __aeabi_memcpy4                          0x00004305   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memcpy8                          0x00004305   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memset                           0x00004329   Thumb Code    14  memseta.o(.text)
+    __aeabi_memset4                          0x00004329   Thumb Code     0  memseta.o(.text)
+    __aeabi_memset8                          0x00004329   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr                           0x00004337   Thumb Code     4  memseta.o(.text)
+    __aeabi_memclr4                          0x00004337   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr8                          0x00004337   Thumb Code     0  memseta.o(.text)
+    _memset$wrapper                          0x0000433b   Thumb Code    18  memseta.o(.text)
+    __aeabi_llsl                             0x0000434d   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x0000434d   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x0000436b   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x0000436b   Thumb Code     0  llushr.o(.text)
+    __scatterload                            0x0000438d   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x0000438d   Thumb Code     0  init.o(.text)
+    __scatterload_copy                       0x000043b1   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x000043bf   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x000043c1   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    decDR                                    0x000043d1   Thumb Code    20  lmic.o(i.decDR)
+    dndr2rps                                 0x000043e9   Thumb Code    20  lmic.o(i.dndr2rps)
+    getBw                                    0x000043fd   Thumb Code     8  lmic.o(i.getBw)
+    getCr                                    0x00004405   Thumb Code     8  lmic.o(i.getCr)
+    getNocrc                                 0x0000440d   Thumb Code     8  lmic.o(i.getNocrc)
+    getSf                                    0x00004415   Thumb Code     8  lmic.o(i.getSf)
+    lowerDR                                  0x0000441d   Thumb Code    30  lmic.o(i.lowerDR)
+    setCr                                    0x0000443b   Thumb Code    12  lmic.o(i.setCr)
+    setIh                                    0x00004447   Thumb Code    12  lmic.o(i.setIh)
+    setNocrc                                 0x00004453   Thumb Code    14  lmic.o(i.setNocrc)
+    updr2rps                                 0x00004461   Thumb Code    10  lmic.o(i.updr2rps)
+    validDR                                  0x00004471   Thumb Code    20  lmic.o(i.validDR)
+    maxFrameLens                             0x000055b0   Data           4  lmic.o(.constdata)
+    _DR2RPS_CRC                              0x000055b4   Data          10  lmic.o(.constdata)
+    Region$$Table$$Base                      0x0000570c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0000572c   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000054   Data           4  system_nrf52.o(.data)
     AESAUX                                   0x20000058   Data          16  aes.o(.bss)
     AESKEY                                   0x20000068   Data         176  aes.o(.bss)
@@ -507,62 +506,62 @@ Memory Map of the image
 
   Image Entry point : 0x00000401
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x000057d8, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00005784, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00005780, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x0000572c, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000400   Data   RO          398    RESET               arm_startup_nrf52.o
-    0x00000400   0x00000000   Code   RO          440  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x00000400   0x00000004   Code   RO          453    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x00000404   0x00000004   Code   RO          456    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x00000408   0x00000000   Code   RO          458    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x00000408   0x00000000   Code   RO          460    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x00000408   0x00000008   Code   RO          461    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x00000410   0x00000000   Code   RO          463    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x00000410   0x00000000   Code   RO          465    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x00000410   0x00000004   Code   RO          454    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x00000000   0x00000400   Data   RO          401    RESET               arm_startup_nrf52.o
+    0x00000400   0x00000000   Code   RO          443  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x00000400   0x00000004   Code   RO          456    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x00000404   0x00000004   Code   RO          459    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x00000408   0x00000000   Code   RO          461    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x00000408   0x00000000   Code   RO          463    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x00000408   0x00000008   Code   RO          464    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x00000410   0x00000000   Code   RO          466    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x00000410   0x00000000   Code   RO          468    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x00000410   0x00000004   Code   RO          457    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x00000414   0x0000009c   Code   RO            1    .text               main.o
     0x000004b0   0x00000884   Code   RO           35    .text               aes.o
     0x00000d34   0x00002280   Code   RO           57    .text               lmic.o
     0x00002fb4   0x00000158   Code   RO          233    .text               oslmic.o
-    0x0000310c   0x000008ec   Code   RO          259    .text               radio.o
-    0x000039f8   0x000001a8   Code   RO          304    .text               debug.o
-    0x00003ba0   0x0000033c   Code   RO          369    .text               hal.o
-    0x00003edc   0x00000024   Code   RO          399    .text               arm_startup_nrf52.o
-    0x00003f00   0x00000394   Code   RO          406    .text               system_nrf52.o
-    0x00004294   0x00000062   Code   RO          443    .text               mc_w.l(uldiv.o)
-    0x000042f6   0x00000062   Code   RO          445    .text               mc_w.l(ldiv.o)
-    0x00004358   0x00000024   Code   RO          447    .text               mc_w.l(memcpya.o)
-    0x0000437c   0x00000024   Code   RO          449    .text               mc_w.l(memseta.o)
-    0x000043a0   0x0000001e   Code   RO          467    .text               mc_w.l(llshl.o)
-    0x000043be   0x00000020   Code   RO          469    .text               mc_w.l(llushr.o)
-    0x000043de   0x00000002   PAD
-    0x000043e0   0x00000024   Code   RO          471    .text               mc_w.l(init.o)
-    0x00004404   0x0000000e   Code   RO          475    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x00004412   0x00000002   Code   RO          476    i.__scatterload_null  mc_w.l(handlers.o)
-    0x00004414   0x0000000e   Code   RO          477    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x00004422   0x00000002   PAD
-    0x00004424   0x00000018   Code   RO          162    i.decDR             lmic.o
-    0x0000443c   0x00000014   Code   RO          139    i.dndr2rps          lmic.o
-    0x00004450   0x00000008   Code   RO           81    i.getBw             lmic.o
-    0x00004458   0x00000008   Code   RO           92    i.getCr             lmic.o
-    0x00004460   0x00000008   Code   RO          102    i.getNocrc          lmic.o
-    0x00004468   0x00000008   Code   RO           70    i.getSf             lmic.o
-    0x00004470   0x0000001e   Code   RO          178    i.lowerDR           lmic.o
-    0x0000448e   0x0000000c   Code   RO           97    i.setCr             lmic.o
-    0x0000449a   0x0000000c   Code   RO          117    i.setIh             lmic.o
-    0x000044a6   0x0000000e   Code   RO          107    i.setNocrc          lmic.o
-    0x000044b4   0x00000010   Code   RO          134    i.updr2rps          lmic.o
-    0x000044c4   0x00000018   Code   RO          173    i.validDR           lmic.o
-    0x000044dc   0x00001128   Data   RO           37    .constdata          aes.o
-    0x00005604   0x00000090   Data   RO           59    .constdata          lmic.o
-    0x00005694   0x00000012   Data   RO          261    .constdata          radio.o
-    0x000056a6   0x00000002   PAD
-    0x000056a8   0x000000b5   Data   RO          305    .conststring        debug.o
-    0x0000575d   0x00000003   PAD
-    0x00005760   0x00000020   Data   RO          473    Region$$Table       anon$$obj.o
+    0x0000310c   0x00000890   Code   RO          259    .text               radio.o
+    0x0000399c   0x000001a8   Code   RO          304    .text               debug.o
+    0x00003b44   0x00000344   Code   RO          372    .text               hal.o
+    0x00003e88   0x00000024   Code   RO          402    .text               arm_startup_nrf52.o
+    0x00003eac   0x00000394   Code   RO          409    .text               system_nrf52.o
+    0x00004240   0x00000062   Code   RO          446    .text               mc_w.l(uldiv.o)
+    0x000042a2   0x00000062   Code   RO          448    .text               mc_w.l(ldiv.o)
+    0x00004304   0x00000024   Code   RO          450    .text               mc_w.l(memcpya.o)
+    0x00004328   0x00000024   Code   RO          452    .text               mc_w.l(memseta.o)
+    0x0000434c   0x0000001e   Code   RO          470    .text               mc_w.l(llshl.o)
+    0x0000436a   0x00000020   Code   RO          472    .text               mc_w.l(llushr.o)
+    0x0000438a   0x00000002   PAD
+    0x0000438c   0x00000024   Code   RO          474    .text               mc_w.l(init.o)
+    0x000043b0   0x0000000e   Code   RO          478    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x000043be   0x00000002   Code   RO          479    i.__scatterload_null  mc_w.l(handlers.o)
+    0x000043c0   0x0000000e   Code   RO          480    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x000043ce   0x00000002   PAD
+    0x000043d0   0x00000018   Code   RO          162    i.decDR             lmic.o
+    0x000043e8   0x00000014   Code   RO          139    i.dndr2rps          lmic.o
+    0x000043fc   0x00000008   Code   RO           81    i.getBw             lmic.o
+    0x00004404   0x00000008   Code   RO           92    i.getCr             lmic.o
+    0x0000440c   0x00000008   Code   RO          102    i.getNocrc          lmic.o
+    0x00004414   0x00000008   Code   RO           70    i.getSf             lmic.o
+    0x0000441c   0x0000001e   Code   RO          178    i.lowerDR           lmic.o
+    0x0000443a   0x0000000c   Code   RO           97    i.setCr             lmic.o
+    0x00004446   0x0000000c   Code   RO          117    i.setIh             lmic.o
+    0x00004452   0x0000000e   Code   RO          107    i.setNocrc          lmic.o
+    0x00004460   0x00000010   Code   RO          134    i.updr2rps          lmic.o
+    0x00004470   0x00000018   Code   RO          173    i.validDR           lmic.o
+    0x00004488   0x00001128   Data   RO           37    .constdata          aes.o
+    0x000055b0   0x00000090   Data   RO           59    .constdata          lmic.o
+    0x00005640   0x00000012   Data   RO          261    .constdata          radio.o
+    0x00005652   0x00000002   PAD
+    0x00005654   0x000000b5   Data   RO          305    .conststring        debug.o
+    0x00005709   0x00000003   PAD
+    0x0000570c   0x00000020   Data   RO          476    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000022d0, Max: 0x00010000, ABSOLUTE)
@@ -572,12 +571,12 @@ Memory Map of the image
     0x20000000   0x00000004   Data   RW            2    .data               main.o
     0x20000004   0x00000008   Data   RW          234    .data               oslmic.o
     0x2000000c   0x00000040   Data   RW          306    .data               debug.o
-    0x2000004c   0x00000008   Data   RW          370    .data               hal.o
-    0x20000054   0x00000004   Data   RW          407    .data               system_nrf52.o
+    0x2000004c   0x00000008   Data   RW          373    .data               hal.o
+    0x20000054   0x00000004   Data   RW          410    .data               system_nrf52.o
     0x20000058   0x000000c0   Zero   RW           36    .bss                aes.o
     0x20000118   0x000001a8   Zero   RW           58    .bss                lmic.o
     0x200002c0   0x00000010   Zero   RW          260    .bss                radio.o
-    0x200002d0   0x00002000   Zero   RW          396    STACK               arm_startup_nrf52.o
+    0x200002d0   0x00002000   Zero   RW          399    STACK               arm_startup_nrf52.o
 
 
 ==============================================================================
@@ -587,18 +586,18 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      2180         60       4392          0        192       5797   aes.o
-        36         10       1024          0       8192        824   arm_startup_nrf52.o
-       424         88        181         64          0      34289   debug.o
-       828         88          0          8          0      31112   hal.o
-      9016        258        144          0        424      44794   lmic.o
-       156         58          0          4          0      13843   main.o
-       344         48          0          8          0      13377   oslmic.o
-      2284        170         18          0         16      23134   radio.o
-       916         54          0          4          0      28768   system_nrf52.o
+      2180         60       4392          0        192       5813   aes.o
+        36         10       1024          0       8192        832   arm_startup_nrf52.o
+       424         88        181         64          0      34753   debug.o
+       836        110          0          8          0      31156   hal.o
+      9016        258        144          0        424      44934   lmic.o
+       156         58          0          4          0      13863   main.o
+       344         48          0          8          0      13401   oslmic.o
+      2192         96         18          0         16      23170   radio.o
+       916         54          0          4          0      28780   system_nrf52.o
 
     ----------------------------------------------------------------------
-     16184        834       5796         88       8824     195938   Object Totals
+     16100        782       5796         88       8824     196702   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          5          0          0          0   (incl. Padding)
 
@@ -643,15 +642,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     16604        850       5796         88       8824     194090   Grand Totals
-     16604        850       5796         88       8824     194090   ELF Image Totals
-     16604        850       5796         88          0          0   ROM Totals
+     16520        798       5796         88       8824     194754   Grand Totals
+     16520        798       5796         88       8824     194754   ELF Image Totals
+     16520        798       5796         88          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                22400 (  21.88kB)
+    Total RO  Size (Code + RO Data)                22316 (  21.79kB)
     Total RW  Size (RW Data + ZI Data)              8912 (   8.70kB)
-    Total ROM Size (Code + RO Data + RW Data)      22488 (  21.96kB)
+    Total ROM Size (Code + RO Data + RW Data)      22404 (  21.88kB)
 
 ==============================================================================
 

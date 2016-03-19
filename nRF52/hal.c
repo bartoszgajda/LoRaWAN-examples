@@ -53,6 +53,9 @@ static void hal_io_init () {
                              (GPIOTE_INTENSET_IN1_Set       << GPIOTE_INTENSET_IN1_Pos)  |
                              (GPIOTE_INTENSET_IN2_Set       << GPIOTE_INTENSET_IN2_Pos) ;
     
+    NVIC_EnableIRQ(GPIOTE_IRQn);
+    
+    
     NRF_GPIO->DIRSET = (1UL << RXTX_PIN);
     
     NRF_GPIO->DIRSET = (1UL << NSS_PIN);
@@ -229,7 +232,7 @@ static void hal_time_init () {
     NRF_CLOCK->EVENTS_LFCLKSTARTED = 0;
     
     // set prescaler
-    NRF_RTC0->PRESCALER = 639;
+    NRF_RTC0->PRESCALER = 0; //639;
     
     // enable overflow event
     NRF_RTC0->EVTENSET = RTC_EVTENSET_OVRFLW_Enabled << RTC_EVTENSET_OVRFLW_Pos;
@@ -239,7 +242,8 @@ static void hal_time_init () {
 
     // enable overflow interrupt
     NRF_RTC0->INTENSET = RTC_INTENSET_OVRFLW_Enabled << RTC_INTENSET_OVRFLW_Pos;
-    
+    NVIC_EnableIRQ(RTC0_IRQn);
+        
     // Enable timer counting
     NRF_RTC0->TASKS_START = 1;  
 }
@@ -294,9 +298,11 @@ u1_t hal_checkTimer (u4_t time) {
 void RTC0_IRQHandler () {
     if(NRF_RTC0->EVENTS_OVRFLW) { // overflow
         HAL.ticks++;
+        debug_str("OverFlow\r\n");
     }
     if((NRF_RTC0->EVENTS_COMPARE[0]) && (NRF_RTC0->EVTENSET)) { // expired
         // do nothing, only wake up cpu
+        debug_str("Expired\r\n");
     }
     NRF_RTC0->EVENTS_OVRFLW = 0; // clear IRQ flags ) SR - status register
     NRF_RTC0->EVENTS_COMPARE[0] = 0;
@@ -307,17 +313,17 @@ void RTC0_IRQHandler () {
 // IRQ
 
 void hal_disableIRQs () {
-    //__disable_irq();
-    NVIC_DisableIRQ(RTC0_IRQn);
-    NVIC_DisableIRQ(GPIOTE_IRQn);
+    __disable_irq();
+    //NVIC_DisableIRQ(RTC0_IRQn);
+    //NVIC_DisableIRQ(GPIOTE_IRQn);
     HAL.irqlevel++;
 }
 
 void hal_enableIRQs () {
     if(--HAL.irqlevel == 0) {
-        //__enable_irq();
-        NVIC_EnableIRQ(RTC0_IRQn);
-        NVIC_EnableIRQ(GPIOTE_IRQn);
+        __enable_irq();
+        //NVIC_EnableIRQ(RTC0_IRQn);
+        //NVIC_EnableIRQ(GPIOTE_IRQn);
     }
 }
 
