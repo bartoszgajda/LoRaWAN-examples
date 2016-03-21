@@ -19,10 +19,10 @@
 // I/O & SPI
 
 #define SCK_PIN            25
-#define MISO_PIN   				 24
+#define MISO_PIN   		   24
 #define MOSI_PIN           23
 #define NSS_PIN            22 
-#define RXTX_PIN             1
+#define RXTX_PIN           30
 #define RST_PIN            3    
 #define DIO0_PIN           13  //  sx1276  (line 1 irq handler)
 #define DIO1_PIN           14  //  sx1276  (line 10-15 irq handler)
@@ -41,13 +41,13 @@ static struct {
 static void hal_io_init () {
 
     NRF_GPIOTE->CONFIG[0] =  (GPIOTE_CONFIG_MODE_Event      << GPIOTE_CONFIG_MODE_Pos) |
-                             (GPIOTE_CONFIG_POLARITY_HiToLo << GPIOTE_CONFIG_POLARITY_Pos) |
+                             (GPIOTE_CONFIG_POLARITY_LoToHi << GPIOTE_CONFIG_POLARITY_Pos) |
                              (DIO0_PIN                      << GPIOTE_CONFIG_PSEL_Pos);
     NRF_GPIOTE->CONFIG[1] =  (GPIOTE_CONFIG_MODE_Event      << GPIOTE_CONFIG_MODE_Pos) |
-                             (GPIOTE_CONFIG_POLARITY_HiToLo << GPIOTE_CONFIG_POLARITY_Pos) |
+                             (GPIOTE_CONFIG_POLARITY_LoToHi << GPIOTE_CONFIG_POLARITY_Pos) |
                              (DIO1_PIN                      << GPIOTE_CONFIG_PSEL_Pos);
     NRF_GPIOTE->CONFIG[2] =  (GPIOTE_CONFIG_MODE_Event      << GPIOTE_CONFIG_MODE_Pos) |
-                             (GPIOTE_CONFIG_POLARITY_HiToLo << GPIOTE_CONFIG_POLARITY_Pos) |
+                             (GPIOTE_CONFIG_POLARITY_LoToHi << GPIOTE_CONFIG_POLARITY_Pos) |
                              (DIO2_PIN                      << GPIOTE_CONFIG_PSEL_Pos);
     NRF_GPIOTE->INTENSET  =  (GPIOTE_INTENSET_IN0_Set       << GPIOTE_INTENSET_IN0_Pos)  |
                              (GPIOTE_INTENSET_IN1_Set       << GPIOTE_INTENSET_IN1_Pos)  |
@@ -69,9 +69,9 @@ static void hal_io_init () {
 void hal_pin_rxtx (u1_t val) {
     ASSERT(val == 1 || val == 0);
     if(val == 0) {
-        NRF_GPIO->OUTSET = (1UL << RXTX_PIN);
-    } else {
         NRF_GPIO->OUTCLR = (1UL << RXTX_PIN);
+    } else {
+        NRF_GPIO->OUTSET = (1UL << RXTX_PIN);
     }
 }
 
@@ -302,7 +302,7 @@ void RTC0_IRQHandler () {
     }
     if((NRF_RTC0->EVENTS_COMPARE[0]) && (NRF_RTC0->EVTENSET)) { // expired
         // do nothing, only wake up cpu
-        debug_str("Expired\r\n");
+        //debug_str("Expired\r\n");
     }
     NRF_RTC0->EVENTS_OVRFLW = 0; // clear IRQ flags ) SR - status register
     NRF_RTC0->EVENTS_COMPARE[0] = 0;

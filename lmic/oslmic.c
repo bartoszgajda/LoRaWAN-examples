@@ -25,6 +25,7 @@ void os_init () {
     radio_init();
     debug_str("\r\n radio init done \r\n");
     LMIC_init();
+    debug_str("\r\n lmic init done \r\n");
 }
 
 ostime_t os_getTime () {

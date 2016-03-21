@@ -304,8 +304,8 @@ static void opmodeLora() {
     u |= 0x8;   // TBD: sx1276 high freq
 #endif
     writeReg(RegOpMode, u);
-    u1_t tmp = u+0x20;
-    debug_str(&tmp);
+    //u1_t tmp = u+0x20;
+    //debug_str(&tmp);
 }
 
 static void opmodeFSK() {
@@ -516,6 +516,7 @@ static void starttx () {
         txfsk();
     } else { // LoRa modem
         txlora();
+        //debug_str("\r\n test: txlora done \r\n");
     }
     // the radio will go back to STANDBY mode as soon as the TX is finished
     // the corresponding IRQ will inform us about completion.
@@ -533,12 +534,12 @@ static const u1_t rxlorairqmask[] = {
 static void rxlora (u1_t rxmode) {
     // select LoRa modem (from sleep mode)
     opmodeLora();
-    debug_str("\r\n send opmodelora done \r\n");
+    //debug_str("\r\n send opmodelora done \r\n");
     //u1_t tmp = readReg(RegOpMode);
     //tmp = tmp+0x20;
     //debug_str(&tmp);
     ASSERT((readReg(RegOpMode) & OPMODE_LORA) != 0);
-    debug_str("\r\n check done \r\n");
+    //debug_str("\r\n check done \r\n");
     // enter standby mode (warm up))
     opmode(OPMODE_STANDBY);
     // don't use MAC settings at startup
@@ -656,13 +657,11 @@ void radio_init () {
     hal_waitUntil(os_getTime()+ms2osticks(1)); // wait >100us
     hal_pin_rst(2); // configure RST pin floating!
     hal_waitUntil(os_getTime()+ms2osticks(5)); // wait 5ms
-    debug_str("\r\n SX1276 reset done \r\n");
+    //debug_str("\r\n SX1276 reset done \r\n");
     
-    u1_t aaa = readReg(RegVersion);
-    aaa = aaa+0x20;
-    debug_str(&aaa);
-    
-    //hal_failed(); //remove
+    //u1_t aaa = readReg(RegVersion);
+    //aaa = aaa+0x20;
+    //debug_str(&aaa);
     
     opmode(OPMODE_SLEEP);
 
@@ -670,7 +669,7 @@ void radio_init () {
     u1_t v = readReg(RegVersion);
 #ifdef CFG_sx1276_radio
     //debug_str("\r\n ver check: \r\n");
-    u1_t bbb = readReg(RegVersion);
+    //u1_t bbb = readReg(RegVersion);
     ASSERT(v == 0x12 ); 
 #elif CFG_sx1272_radio
     ASSERT(v == 0x22);
@@ -749,6 +748,7 @@ static const u2_t LORA_RXDONE_FIXUP[] = {
 // called by hal ext IRQ handler
 // (radio goes to stanby mode after tx/rx operations)
 void radio_irq_handler (u1_t dio) {
+    //debug_str("\r\n radio irq \r\n");
     ostime_t now = os_getTime();
     if( (readReg(RegOpMode) & OPMODE_LORA) != 0) { // LORA modem
         u1_t flags = readReg(LORARegIrqFlags);
