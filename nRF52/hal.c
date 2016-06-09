@@ -13,17 +13,21 @@
 #include "lmic.h"
 #include "nrf.h"
 #include "debug.h"
+//#include "hal.h"
 
 
 // -----------------------------------------------------------------------------
 // I/O & SPI
+
+#define LED1               (17UL)
 
 #define SCK_PIN            25
 #define MISO_PIN   		   24
 #define MOSI_PIN           23
 #define NSS_PIN            22 
 #define RXTX_PIN           30
-#define RST_PIN            3    
+#define RST_PIN            3  
+
 #define DIO0_PIN           13  //  sx1276  (line 1 irq handler)
 #define DIO1_PIN           14  //  sx1276  (line 10-15 irq handler)
 #define DIO2_PIN           15  //  sx1276  (line 10-15 irq handler)
@@ -40,6 +44,13 @@ static struct {
 
 static void hal_io_init () {
 
+    NRF_GPIO->PIN_CNF[DIO0_PIN] = (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) |
+                                  (GPIO_PIN_CNF_PULL_Pulldown << GPIO_PIN_CNF_PULL_Pos);
+    NRF_GPIO->PIN_CNF[DIO1_PIN] = (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) |
+                                  (GPIO_PIN_CNF_PULL_Pulldown << GPIO_PIN_CNF_PULL_Pos);
+    NRF_GPIO->PIN_CNF[DIO2_PIN] = (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) |
+                                  (GPIO_PIN_CNF_PULL_Pulldown << GPIO_PIN_CNF_PULL_Pos);
+    
     NRF_GPIOTE->CONFIG[0] =  (GPIOTE_CONFIG_MODE_Event      << GPIOTE_CONFIG_MODE_Pos) |
                              (GPIOTE_CONFIG_POLARITY_LoToHi << GPIOTE_CONFIG_POLARITY_Pos) |
                              (DIO0_PIN                      << GPIOTE_CONFIG_PSEL_Pos);
@@ -52,6 +63,11 @@ static void hal_io_init () {
     NRF_GPIOTE->INTENSET  =  (GPIOTE_INTENSET_IN0_Set       << GPIOTE_INTENSET_IN0_Pos)  |
                              (GPIOTE_INTENSET_IN1_Set       << GPIOTE_INTENSET_IN1_Pos)  |
                              (GPIOTE_INTENSET_IN2_Set       << GPIOTE_INTENSET_IN2_Pos) ;
+    
+//    NRF_GPIOTE->EVENTS_IN[0] = 0; // clear event
+//    NRF_GPIOTE->EVENTS_IN[1] = 0; // clear event
+//    NRF_GPIOTE->EVENTS_IN[2] = 0; // clear event
+//    NRF_GPIOTE->EVENTS_IN[3] = 0; // clear event
     
     NVIC_EnableIRQ(GPIOTE_IRQn);
     
@@ -105,21 +121,36 @@ void GPIOTE_IRQHandler () {
     // DIO 0
     if(NRF_GPIOTE->EVENTS_IN[0] != 0) { // pending
         NRF_GPIOTE->EVENTS_IN[0] = 0; // clear event
+//        debug_str("\r\n dio0 \r\n");
         // invoke radio handler (on IRQ!)
         radio_irq_handler(0);
     }
     // DIO 1
     if(NRF_GPIOTE->EVENTS_IN[1] != 0) { // pending
         NRF_GPIOTE->EVENTS_IN[1] = 0; // clear event
+//        debug_str("\r\n dio1 \r\n");
         // invoke radio handler (on IRQ!)
         radio_irq_handler(1);
     }
     // DIO 2
     if(NRF_GPIOTE->EVENTS_IN[2] != 0) { // pending
         NRF_GPIOTE->EVENTS_IN[2] = 0; // clear event
+//        debug_str("\r\n dio2 \r\n");
         // invoke radio handler (on IRQ!)
         radio_irq_handler(2);
     }
+    
+//    if(NRF_GPIOTE->EVENTS_IN[3] !=0) {
+//    NRF_GPIOTE->EVENTS_IN[3] = 0;
+//    onSendFrame(NULL);
+//    uint32_t counter = 10000000;
+//    NRF_GPIO->OUTCLR = (1UL << LED1);
+//	  while (counter) {
+//		    counter-- ; 
+//	  }
+//	  NRF_GPIO->OUTSET = (1UL << LED1);
+
+//    }
 }
 
 // -----------------------------------------------------------------------------
@@ -298,7 +329,7 @@ u1_t hal_checkTimer (u4_t time) {
 void RTC0_IRQHandler () {
     if(NRF_RTC0->EVENTS_OVRFLW) { // overflow
         HAL.ticks++;
-        debug_str("OverFlow\r\n");
+//        debug_str("OverFlow\r\n");
     }
     if((NRF_RTC0->EVENTS_COMPARE[0]) && (NRF_RTC0->EVTENSET)) { // expired
         // do nothing, only wake up cpu

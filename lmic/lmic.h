@@ -15,6 +15,17 @@
 #ifndef _lmic_h_
 #define _lmic_h_
 
+// MBED compiler options
+#define CFG_eu868                                   1
+//#define CFG_us915                                   1
+#define CHNL_HYBRID     0       /* US915: 0-7 to select block of 8 channels used */
+
+#define USE_SMTC_RADIO_DRIVER                       1
+
+//#define CFG_sx1272_radio                            0
+#define CFG_sx1276_radio                            1
+// End MBED compiler options
+
 #include "oslmic.h"
 #include "lorabase.h"
 
@@ -147,6 +158,7 @@ struct lmic_t {
     u1_t        rxsyms;
     u1_t        dndr;
     s1_t        txpow;     // dBm
+    s1_t        txpow_limit;    // dBm maximum permitted
 
     osjob_t     osjob;
 
@@ -173,6 +185,8 @@ struct lmic_t {
     u1_t        datarate;     // current data rate
     u1_t        errcr;        // error coding rate (used for TX only)
     u1_t        rejoinCnt;    // adjustment for rejoin datarate
+    u1_t        joinBlock;    // during join attempt: current channel block
+    u1_t        joinBlockChnl;    // during join attempt: current 125KHz channel    
     s2_t        drift;        // last measured drift
     s2_t        lastDriftDiff;
     s2_t        maxDriftDiff;
@@ -258,6 +272,7 @@ void  LMIC_tryRejoin     (void);
 void LMIC_setSession (u4_t netid, devaddr_t devaddr, xref2u1_t nwkKey, xref2u1_t artKey);
 void LMIC_setLinkCheckMode (bit_t enabled);
 
+void LMIC_reverse_memcpy(u1_t *dst, const u1_t *src, size_t len);
 // Special APIs - for development or testing
 // !!!See implementation for caveats!!!
 

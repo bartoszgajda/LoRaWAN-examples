@@ -21,11 +21,11 @@ static struct {
 void os_init () {
     memset(&OS, 0x00, sizeof(OS));
     hal_init();
-    debug_str("\r\n hal init done \r\n");
+//    debug_str("\r\n hal init done \r\n");
     radio_init();
-    debug_str("\r\n radio init done \r\n");
+//    debug_str("\r\n radio init done \r\n");
     LMIC_init();
-    debug_str("\r\n lmic init done \r\n");
+//    debug_str("\r\n lmic init done \r\n");
 }
 
 ostime_t os_getTime () {
@@ -95,15 +95,19 @@ void os_runloop () {
         if(OS.runnablejobs) {
             j = OS.runnablejobs;
             OS.runnablejobs = j->next;
+//            debug_str("\r\n runnable \r\n");
         } else if(OS.scheduledjobs && hal_checkTimer(OS.scheduledjobs->deadline)) { // check for expired timed jobs
             j = OS.scheduledjobs;
             OS.scheduledjobs = j->next;
+//            debug_str("\r\n scheduled \r\n");
         } else { // nothing pending
             hal_sleep(); // wake by irq (timer already restarted)
+//            debug_str("\r\n sleep \r\n");
         }
         hal_enableIRQs();
         if(j) { // run job callback
             j->func(j);
+//            debug_str("\r\n runj \r\n");
         }
     }
 }

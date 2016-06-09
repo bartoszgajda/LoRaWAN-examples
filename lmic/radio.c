@@ -516,7 +516,7 @@ static void starttx () {
         txfsk();
     } else { // LoRa modem
         txlora();
-        //debug_str("\r\n test: txlora done \r\n");
+//        debug_str("\r\n test: txlora done \r\n");
     }
     // the radio will go back to STANDBY mode as soon as the TX is finished
     // the corresponding IRQ will inform us about completion.
@@ -755,6 +755,7 @@ void radio_irq_handler (u1_t dio) {
         if( flags & IRQ_LORA_TXDONE_MASK ) {
             // save exact tx time
             LMIC.txend = now - us2osticks(43); // TXDONE FIXUP
+//            debug_str("\r\n txdone \r\n");
         } else if( flags & IRQ_LORA_RXDONE_MASK ) {
             // save exact rx time
             if(getBw(LMIC.rps) == BW125) {
@@ -771,14 +772,17 @@ void radio_irq_handler (u1_t dio) {
             // read rx quality parameters
             LMIC.snr  = readReg(LORARegPktSnrValue); // SNR [dB] * 4
             LMIC.rssi = readReg(LORARegPktRssiValue) - 125 + 64; // RSSI [dBm] (-196...+63)
+//            debug_str("\r\n rxdone \r\n");
         } else if( flags & IRQ_LORA_RXTOUT_MASK ) {
             // indicate timeout
             LMIC.dataLen = 0;
+//            debug_str("\r\n indtout \r\n");
         }
         // mask all radio IRQs
         writeReg(LORARegIrqFlagsMask, 0xFF);
         // clear radio IRQ flags
         writeReg(LORARegIrqFlags, 0xFF);
+//        debug_str("\r\n irq handler \r\n");
     } else { // FSK modem
         u1_t flags1 = readReg(FSKRegIrqFlags1);
         u1_t flags2 = readReg(FSKRegIrqFlags2);
