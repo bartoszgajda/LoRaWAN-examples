@@ -202,7 +202,7 @@ static void hal_spi_init () { //SPI pins config
     NRF_SPI0->PSEL.MISO = MISO_PIN; 
     
     //NRF_SPI0->CONFIG = (SPI_CONFIG_CPHA_Leading << SPI_CONFIG_CPHA_Pos) | (SPI_CONFIG_CPOL_ActiveHigh << SPI_CONFIG_CPOL_Pos); 
-    //NRF_SPI0->FREQUENCY = (SPI_FREQUENCY_FREQUENCY_K125 << SPI_FREQUENCY_FREQUENCY_Pos);
+    //NRF_SPI0->FREQUENCY = (SPI_FREQUENCY_FREQUENCY_M1 << SPI_FREQUENCY_FREQUENCY_Pos);
     NRF_SPI0->ENABLE = SPI_ENABLE_ENABLE_Enabled << SPI_ENABLE_ENABLE_Pos; 
     
 }
@@ -258,9 +258,11 @@ static void hal_time_init () {
  
     // Start LFCLK (32kHz) crystal oscillator. If you don't have crystal on your board, choose RCOSC instead.
     NRF_CLOCK->LFCLKSRC = CLOCK_LFCLKSRC_SRC_Xtal << CLOCK_LFCLKSRC_SRC_Pos;
+    NRF_CLOCK->EVENTS_LFCLKSTARTED  = 0;
     NRF_CLOCK->TASKS_LFCLKSTART = 1;
-    while (NRF_CLOCK->EVENTS_LFCLKSTARTED == 0);
-    NRF_CLOCK->EVENTS_LFCLKSTARTED = 0;
+    while (NRF_CLOCK->EVENTS_LFCLKSTARTED == 0) {}
+    //NRF_CLOCK->EVENTS_LFCLKSTARTED = 0;
+    NRF_RTC0->TASKS_STOP = 0;
     
     // set prescaler
     NRF_RTC0->PRESCALER = 0; //639;
